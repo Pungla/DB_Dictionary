@@ -15,8 +15,10 @@ namespace DB_lesson
         const string floatTextExample = "Example";
         const string floatTextRussian = "Russian word";
 
-        static int width = 0;
-        static int height = 0;
+        static int widthNew = 0;
+        static int heightNew = 0;
+        static int widthOld = 0;
+        static int heightOld = 0;
 
         public Main()
         {
@@ -25,9 +27,11 @@ namespace DB_lesson
 
         private void Main_Load(object sender, System.EventArgs e)
         {
-            width = Width;
-            height = Height;
-            
+            widthNew = Width;
+            heightNew = Height;
+            widthOld = Width;
+            heightOld = Height;
+
 
             sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["DictionaryDB"].ConnectionString);
 
@@ -149,11 +153,13 @@ namespace DB_lesson
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            //Main main = new Main();
+        {           
 
             if (tabControl1.SelectedTab == Page1)
             {
+                Width = widthOld;
+                Height = heightOld;
+
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(
                     "SELECT ROW_NUMBER() OVER (ORDER BY English_words DESC) AS [Number], English_words, Transcription, Example, Russian_words FROM Dictionary", sqlConnection);
 
@@ -168,10 +174,12 @@ namespace DB_lesson
             }
             else
             {
+                widthOld = Width;
+                heightOld = Height;
                 AutoSizeMode = AutoSizeMode.GrowAndShrink;
                 WindowState = FormWindowState.Normal;
-                Width = width;
-                Height = height;
+                Width = widthNew;
+                Height = heightNew;
                 MaximizeBox = false;
             }
 
