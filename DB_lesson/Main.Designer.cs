@@ -44,6 +44,8 @@ namespace DB_lesson
             this.addTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dictionaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.translateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yandexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.googleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outputTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelForNote = new System.Windows.Forms.Panel();
@@ -217,20 +219,37 @@ namespace DB_lesson
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
             // 
             // dictionaryToolStripMenuItem
             // 
             this.dictionaryToolStripMenuItem.Name = "dictionaryToolStripMenuItem";
-            this.dictionaryToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.dictionaryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.dictionaryToolStripMenuItem.Text = "Dictionary";
             // 
             // translateToolStripMenuItem
             // 
+            this.translateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.yandexToolStripMenuItem,
+            this.googleToolStripMenuItem});
             this.translateToolStripMenuItem.Name = "translateToolStripMenuItem";
-            this.translateToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.translateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.translateToolStripMenuItem.Text = "Translate";
+            // 
+            // yandexToolStripMenuItem
+            // 
+            this.yandexToolStripMenuItem.Name = "yandexToolStripMenuItem";
+            this.yandexToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.yandexToolStripMenuItem.Text = "Yandex";
+            this.yandexToolStripMenuItem.Click += new System.EventHandler(this.yandexToolStripMenuItem_Click);
+            // 
+            // googleToolStripMenuItem
+            // 
+            this.googleToolStripMenuItem.Name = "googleToolStripMenuItem";
+            this.googleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.googleToolStripMenuItem.Text = "Google";
+            this.googleToolStripMenuItem.Click += new System.EventHandler(this.googleToolStripMenuItem_Click);
             // 
             // outputTableToolStripMenuItem
             // 
@@ -543,6 +562,8 @@ namespace DB_lesson
         private System.Windows.Forms.Button buttonChange;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.ToolStripMenuItem yandexToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem googleToolStripMenuItem;
     }
 }
 

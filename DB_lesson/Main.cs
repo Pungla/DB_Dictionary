@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System;
+using System.Net.NetworkInformation;
 
 namespace DB_lesson
 {
@@ -256,6 +257,20 @@ namespace DB_lesson
         {
             Change();
             ClearField();
+        }
+
+        private void yandexToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (NetworkInterface.GetIsNetworkAvailable())
+                System.Diagnostics.Process.Start("https://translate.yandex.ru/");
+            else MessageBox.Show("Internet connection not available");
+        }
+
+        private void googleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (NetworkInterface.GetIsNetworkAvailable())
+                System.Diagnostics.Process.Start("https://translate.google.ru/");
+            else MessageBox.Show("Internet connection not available");
         }
     }
 }
