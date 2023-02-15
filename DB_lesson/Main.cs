@@ -3,22 +3,29 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System;
 
 namespace DB_lesson
 {
+    enum RowState
+    {
+        Existed,
+        New,
+        Modified,
+        ModifiedNew,
+        Deleted
+    }
+
     public partial class Main : Form
     {
-        private SqlConnection sqlConnection = null;
-
-        const string floatTextEnglish = "English word";
-        const string floatTextTranscription = "Transcription";
-        const string floatTextExample = "Example";
-        const string floatTextRussian = "Russian word";
+        DataBase dataBase = new DataBase();
 
         static int widthNew = 0;
         static int heightNew = 0;
         static int widthOld = 0;
         static int heightOld = 0;
+
+        private int selectedRow;
 
         public Main()
         {
@@ -32,125 +39,45 @@ namespace DB_lesson
             widthOld = Width;
             heightOld = Height;
 
+            CreateColumns();
 
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["DictionaryDB"].ConnectionString);
-
-            sqlConnection.Open();
-
-            { 
-                textBoxEnglish.Text = floatTextEnglish;
-                textBoxEnglish.ForeColor = Color.Gray;
-
-                textBoxTranscription.Text = floatTextTranscription;
-                textBoxTranscription.ForeColor = Color.Gray;
-
-                textBoxExample.Text = floatTextExample;
-                textBoxExample.ForeColor = Color.Gray;
-
-                textBoxRussian.Text = floatTextRussian;
-                textBoxRussian.ForeColor = Color.Gray;
-            } //подсказки
-
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(
-                "SELECT ROW_NUMBER() OVER (ORDER BY English_words DESC) AS [Number], English_words, Transcription, Example, Russian_words FROM Dictionary", sqlConnection);
-
-            DataSet dataSet = new DataSet();
-
-            dataAdapter.Fill(dataSet);
-
-            dataGridView1.DataSource = dataSet.Tables[0];
-        }
-              
-        private void textBoxEnglish_Enter(object sender, System.EventArgs e)
-        {
-            textBoxEnglish.Text = null;
-            textBoxEnglish.ForeColor = Color.Black;
+            RefreshDataGrid(dataGridView1);
         }
 
-        private void textBoxTranscription_Enter(object sender, System.EventArgs e)
+        private void CreateColumns() // create colums
         {
-            textBoxTranscription.Text = null;
-            textBoxTranscription.ForeColor = Color.Black;
+            dataGridView1.Columns.Add("Number", "Number");
+            dataGridView1.Columns.Add("English_words", "English words");
+            dataGridView1.Columns.Add("Transcription", "Transcription");
+            dataGridView1.Columns.Add("Example", "Example");
+            dataGridView1.Columns.Add("Russian_words", "Russian words");
+            dataGridView1.Columns.Add("IsNew", String.Empty);
         }
 
-        private void textBoxExample_Enter(object sender, System.EventArgs e)
+        private void ReadSingleRow(DataGridView dgw, IDataRecord record , int i)
         {
-            textBoxExample.Text = null;
-            textBoxExample.ForeColor = Color.Black;
-        }
+            dgw.Rows.Add((i), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4), RowState.ModifiedNew);
+        }// считывает каждую строку
 
-        private void textBoxRussian_Enter(object sender, System.EventArgs e)
+        private void RefreshDataGrid(DataGridView dgw)
         {
-            textBoxRussian.Text = null;
-            textBoxRussian.ForeColor = Color.Black;
-        }
+            dgw.Rows.Clear();
+            string queryString = $"SELECT * from Dictionary";           
 
-        private void textBoxEnglish_Leave(object sender, System.EventArgs e)
-        {
-            if (textBoxEnglish.Text == "")
+            SqlCommand command = new SqlCommand(queryString, dataBase.getConnection());
+            dataBase.OpenConnection();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            int i = 1;
+            while (reader.Read())
             {
-                textBoxEnglish.Text = floatTextEnglish;
-                textBoxEnglish.ForeColor = Color.Gray;
+                ReadSingleRow(dgw, reader, i);
+                i++;
             }
-        }
+            reader.Close();
 
-        private void textBoxTranscription_Leave(object sender, System.EventArgs e)
-        {
-            if (textBoxTranscription.Text == "")
-            {
-                textBoxTranscription.Text = floatTextTranscription;
-                textBoxTranscription.ForeColor = Color.Gray;
-            }
-        }
-
-        private void textBoxExample_Leave(object sender, System.EventArgs e)
-        {
-            if (textBoxExample.Text == "")
-            {
-                textBoxExample.Text = floatTextExample;
-                textBoxExample.ForeColor = Color.Gray;
-            }
-        }
-
-        private void textBoxRussian_Leave(object sender, System.EventArgs e)
-        {
-            if (textBoxRussian.Text == "")
-            {
-                textBoxRussian.Text = floatTextRussian;
-                textBoxRussian.ForeColor = Color.Gray;
-            }
-        }
-
-        private void buttonAdd_Click(object sender, System.EventArgs e)
-        {
-
-            if (FloatText_True())
-            {
-                SqlCommand command = new SqlCommand(
-                $"INSERT INTO [Dictionary] (English_words, Transcription, Example, Russian_words) VALUES (@English_words, @Transcription, @Example, @Russian_words)",
-                sqlConnection);
-
-                command.Parameters.AddWithValue("English_words", textBoxEnglish.Text);
-                command.Parameters.AddWithValue("Transcription", textBoxTranscription.Text);
-                command.Parameters.AddWithValue("Example", textBoxExample.Text);
-                command.Parameters.AddWithValue("Russian_words", textBoxRussian.Text);
-                MessageBox.Show(command.ExecuteNonQuery().ToString());
-            }
-            else
-                MessageBox.Show("Not all data is entered!");
-
-        }
-
-        private bool FloatText_True()
-        {
-            if (textBoxEnglish.Text == floatTextEnglish ||
-                textBoxTranscription.Text == floatTextTranscription ||
-                textBoxExample.Text == floatTextExample ||
-                textBoxRussian.Text == floatTextRussian)
-                return false;
-
-            else return true;
-        }
+        }// выводит БД
 
         private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
         {           
@@ -160,15 +87,7 @@ namespace DB_lesson
                 Width = widthOld;
                 Height = heightOld;
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(
-                    "SELECT ROW_NUMBER() OVER (ORDER BY English_words DESC) AS [Number], English_words, Transcription, Example, Russian_words FROM Dictionary", sqlConnection);
-
-                DataSet dataSet = new DataSet();
-
-                dataAdapter.Fill(dataSet);
-
-                dataGridView1.DataSource = dataSet.Tables[0];
-
+                RefreshDataGrid(dataGridView1);
                 AutoSizeMode = AutoSizeMode.GrowOnly;
                 MaximizeBox = true;
             }
@@ -185,39 +104,108 @@ namespace DB_lesson
 
         }
 
-        private void textBoxSort_TextChanged(object sender, System.EventArgs e)
+        private void deleteRow()
         {
-            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = $"English_words LIKE '%{textBoxSort.Text}%'"; 
+            int index = dataGridView1.CurrentCell.RowIndex;
+
+            dataGridView1.Rows[index].Visible = false;
+
+            if (dataGridView1.Rows[index].Cells[0].Value.ToString() == string.Empty)
+            {
+                dataGridView1.Rows[index].Cells[5].Value = RowState.Deleted;
+                return;
+            }
+
+            dataGridView1.Rows[index].Cells[5].Value = RowState.Deleted;
         }
 
-        private void comboBoxSelect_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void UpdateTable()
         {
-            DataSet dataSet = new DataSet();
-            SqlDataAdapter dataAdapter = new SqlDataAdapter();
-            switch (comboBoxSelect.SelectedIndex)
+            dataBase.OpenConnection();
+
+            for (int index = 0; index < dataGridView1.Rows.Count; index++)
             {
-                case 0:
-                    dataAdapter = new SqlDataAdapter("SELECT ROW_NUMBER() OVER (ORDER BY English_words DESC) AS [Number], English_words, Transcription, Example, Russian_words " +
-                        "FROM Dictionary ORDER BY English_words", sqlConnection); // output by english words
-                    break;
+                var rowState = (RowState)dataGridView1.Rows[index].Cells[5].Value;
 
-                case 1:
-                    dataAdapter = new SqlDataAdapter("SELECT ROW_NUMBER() OVER (ORDER BY English_words DESC) AS [Number], English_words, Transcription, Example, Russian_words " +
-                        "FROM Dictionary ORDER BY Russian_words", sqlConnection); // russian words
-                    break;
+                if (rowState == RowState.Existed)
+                    continue;
 
-                case 2:
-                    dataAdapter = new SqlDataAdapter("SELECT ROW_NUMBER() OVER (ORDER BY English_words DESC) AS [Number], English_words, Transcription, Example, Russian_words" +
-                        " FROM Dictionary ORDER BY Example", sqlConnection); // example
-                    break;
+                if (rowState == RowState.Deleted)
+                {
+                    var id = Convert.ToString(dataGridView1.Rows[index].Cells[1].Value);
+                    var deleteQuery = $"delete from Dictionary where English_words = {id}";
 
-                case 3:
-                    dataAdapter = new SqlDataAdapter("SELECT ROW_NUMBER() OVER (ORDER BY English_words DESC) AS [Number], English_words, Transcription, Example, Russian_words" +
-                        " FROM Dictionary", sqlConnection); // all
-                    break;
+                    var command = new SqlCommand(deleteQuery, dataBase.getConnection());
+                    command.ExecuteNonQuery();
+                }
             }
-            dataAdapter.Fill(dataSet);
-            dataGridView1.DataSource = dataSet.Tables[0];
+
+            dataBase.CloseConnection();
+        }
+
+        private void Search(DataGridView dgw) // активный поиск
+        {
+            dgw.Rows.Clear();
+
+            string searchString = $"select * from Dictionary where concat (English_words, Transcription, Example, Russian_words) like '%" + textBoxSort.Text + "%'";
+
+            SqlCommand command = new SqlCommand(searchString, dataBase.getConnection());
+
+            dataBase.OpenConnection();
+
+            SqlDataReader dataReader = command.ExecuteReader();
+
+            int i = 1;
+            while (dataReader.Read())
+            {
+                ReadSingleRow(dgw, dataReader, i);
+                i++;
+            }
+            dataReader.Close();
+
+            dataBase.CloseConnection();
+        }
+
+        private void textBoxSort_TextChanged(object sender, System.EventArgs e)
+        {
+            Search(dataGridView1);
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) // вывод в записи 
+        {
+            selectedRow = e.RowIndex;
+
+            if(e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[selectedRow];
+
+                textBoxNumber.Text = row.Cells[0].Value.ToString();
+                textBoxEnWr.Text = row.Cells[1].Value.ToString();
+                textBoxTranscr.Text = row.Cells[2].Value.ToString();
+                textBoxExam.Text = row.Cells[3].Value.ToString();
+                textBoxRusWr.Text = row.Cells[4].Value.ToString();
+            }
+        }
+
+        private void buttonNewNote_Click(object sender, System.EventArgs e)
+        {
+            Add_Form add_Form = new Add_Form();
+            add_Form.Show();
+        }
+
+        private void buttonRefresh_Click(object sender, System.EventArgs e)
+        {
+            RefreshDataGrid(dataGridView1);
+        }
+
+        private void buttonDelete_Click(object sender, System.EventArgs e)
+        {
+            deleteRow();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            UpdateTable();
         }
     }
 }

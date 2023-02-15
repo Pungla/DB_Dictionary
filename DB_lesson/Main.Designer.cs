@@ -29,34 +29,51 @@ namespace DB_lesson
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Page1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBoxSelect = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.textBoxSort = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.Page2 = new System.Windows.Forms.TabPage();
             this.Page3 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dictionaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.translateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.outputTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBoxEnglish = new System.Windows.Forms.TextBox();
-            this.textBoxTranscription = new System.Windows.Forms.TextBox();
-            this.textBoxExample = new System.Windows.Forms.TextBox();
-            this.textBoxRussian = new System.Windows.Forms.TextBox();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.Page2 = new System.Windows.Forms.TabPage();
+            this.panelForNote = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelNumber = new System.Windows.Forms.Label();
+            this.textBoxRusWr = new System.Windows.Forms.TextBox();
+            this.textBoxNumber = new System.Windows.Forms.TextBox();
+            this.labelRusWr = new System.Windows.Forms.Label();
+            this.textBoxExam = new System.Windows.Forms.TextBox();
+            this.labelEnWr = new System.Windows.Forms.Label();
+            this.textBoxTranscr = new System.Windows.Forms.TextBox();
+            this.labelExample = new System.Windows.Forms.Label();
+            this.textBoxEnWr = new System.Windows.Forms.TextBox();
+            this.labelTranscr = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonNewNote = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonChange = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Page1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.Page2.SuspendLayout();
+            this.panelForNote.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -64,11 +81,11 @@ namespace DB_lesson
             this.tabControl1.Controls.Add(this.Page1);
             this.tabControl1.Controls.Add(this.Page2);
             this.tabControl1.Controls.Add(this.Page3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(471, 378);
+            this.tabControl1.Size = new System.Drawing.Size(784, 311);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -78,7 +95,7 @@ namespace DB_lesson
             this.Page1.Location = new System.Drawing.Point(4, 25);
             this.Page1.Name = "Page1";
             this.Page1.Padding = new System.Windows.Forms.Padding(3);
-            this.Page1.Size = new System.Drawing.Size(463, 351);
+            this.Page1.Size = new System.Drawing.Size(776, 282);
             this.Page1.TabIndex = 1;
             this.Page1.Text = "Output";
             this.Page1.UseVisualStyleBackColor = true;
@@ -86,13 +103,12 @@ namespace DB_lesson
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxSort, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.comboBoxSelect, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.buttonRefresh, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -100,25 +116,13 @@ namespace DB_lesson
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(457, 345);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(770, 276);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(3, 276);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(313, 34);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Search";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -127,54 +131,62 @@ namespace DB_lesson
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(451, 270);
+            this.dataGridView1.Size = new System.Drawing.Size(764, 214);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // comboBoxSelect
+            // label2
             // 
-            this.comboBoxSelect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBoxSelect.FormattingEnabled = true;
-            this.comboBoxSelect.Items.AddRange(new object[] {
-            "English words",
-            "Russian words",
-            "Exemple",
-            "All"});
-            this.comboBoxSelect.Location = new System.Drawing.Point(322, 313);
-            this.comboBoxSelect.Name = "comboBoxSelect";
-            this.comboBoxSelect.Size = new System.Drawing.Size(132, 26);
-            this.comboBoxSelect.TabIndex = 3;
-            this.comboBoxSelect.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelect_SelectedIndexChanged);
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(3, 220);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(702, 27);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Search";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxSort
             // 
             this.textBoxSort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSort.Location = new System.Drawing.Point(3, 313);
+            this.textBoxSort.Location = new System.Drawing.Point(3, 250);
             this.textBoxSort.Name = "textBoxSort";
-            this.textBoxSort.Size = new System.Drawing.Size(313, 27);
+            this.textBoxSort.Size = new System.Drawing.Size(702, 27);
             this.textBoxSort.TabIndex = 4;
             this.textBoxSort.TextChanged += new System.EventHandler(this.textBoxSort_TextChanged);
             // 
-            // label1
+            // buttonRefresh
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(322, 276);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 34);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Output table";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonRefresh.BackgroundImage")));
+            this.buttonRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonRefresh.Location = new System.Drawing.Point(711, 223);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.tableLayoutPanel1.SetRowSpan(this.buttonRefresh, 2);
+            this.buttonRefresh.Size = new System.Drawing.Size(56, 50);
+            this.buttonRefresh.TabIndex = 7;
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
+            // Page2
+            // 
+            this.Page2.Location = new System.Drawing.Point(4, 25);
+            this.Page2.Name = "Page2";
+            this.Page2.Padding = new System.Windows.Forms.Padding(3);
+            this.Page2.Size = new System.Drawing.Size(776, 282);
+            this.Page2.TabIndex = 0;
+            this.Page2.Text = "Insert";
+            this.Page2.UseVisualStyleBackColor = true;
             // 
             // Page3
             // 
             this.Page3.Location = new System.Drawing.Point(4, 25);
             this.Page3.Name = "Page3";
-            this.Page3.Size = new System.Drawing.Size(463, 351);
+            this.Page3.Size = new System.Drawing.Size(776, 282);
             this.Page3.TabIndex = 2;
             this.Page3.Text = "Translate";
             this.Page3.UseVisualStyleBackColor = true;
@@ -183,10 +195,12 @@ namespace DB_lesson
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem});
+            this.addToolStripMenuItem,
+            this.outputTableToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(471, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -194,7 +208,8 @@ namespace DB_lesson
             // 
             this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addTableToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.dictionaryToolStripMenuItem,
+            this.translateToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.Size = new System.Drawing.Size(66, 26);
             this.addToolStripMenuItem.Text = "Action";
@@ -202,114 +217,271 @@ namespace DB_lesson
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
+            // 
+            // dictionaryToolStripMenuItem
+            // 
+            this.dictionaryToolStripMenuItem.Name = "dictionaryToolStripMenuItem";
+            this.dictionaryToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.dictionaryToolStripMenuItem.Text = "Dictionary";
+            // 
+            // translateToolStripMenuItem
+            // 
+            this.translateToolStripMenuItem.Name = "translateToolStripMenuItem";
+            this.translateToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.translateToolStripMenuItem.Text = "Translate";
+            // 
+            // outputTableToolStripMenuItem
+            // 
+            this.outputTableToolStripMenuItem.Name = "outputTableToolStripMenuItem";
+            this.outputTableToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
+            this.outputTableToolStripMenuItem.Text = "Output Table";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // textBoxEnglish
+            // panelForNote
             // 
-            this.textBoxEnglish.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxEnglish.Location = new System.Drawing.Point(3, 3);
-            this.textBoxEnglish.Name = "textBoxEnglish";
-            this.textBoxEnglish.Size = new System.Drawing.Size(450, 27);
-            this.textBoxEnglish.TabIndex = 0;
-            this.textBoxEnglish.Enter += new System.EventHandler(this.textBoxEnglish_Enter);
-            this.textBoxEnglish.Leave += new System.EventHandler(this.textBoxEnglish_Leave);
+            this.panelForNote.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelForNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelForNote.Controls.Add(this.tableLayoutPanel3);
+            this.panelForNote.Location = new System.Drawing.Point(14, 382);
+            this.panelForNote.Name = "panelForNote";
+            this.panelForNote.Size = new System.Drawing.Size(465, 279);
+            this.panelForNote.TabIndex = 2;
             // 
-            // textBoxTranscription
+            // tableLayoutPanel3
             // 
-            this.textBoxTranscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxTranscription.Location = new System.Drawing.Point(3, 57);
-            this.textBoxTranscription.Name = "textBoxTranscription";
-            this.textBoxTranscription.Size = new System.Drawing.Size(450, 27);
-            this.textBoxTranscription.TabIndex = 1;
-            this.textBoxTranscription.Enter += new System.EventHandler(this.textBoxTranscription_Enter);
-            this.textBoxTranscription.Leave += new System.EventHandler(this.textBoxTranscription_Leave);
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel3.Controls.Add(this.labelNumber, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.textBoxRusWr, 1, 4);
+            this.tableLayoutPanel3.Controls.Add(this.textBoxNumber, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.labelRusWr, 0, 4);
+            this.tableLayoutPanel3.Controls.Add(this.textBoxExam, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.labelEnWr, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.textBoxTranscr, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.labelExample, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.textBoxEnWr, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.labelTranscr, 0, 2);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 5;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(463, 277);
+            this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // textBoxExample
+            // labelNumber
             // 
-            this.textBoxExample.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxExample.Location = new System.Drawing.Point(3, 111);
-            this.textBoxExample.Name = "textBoxExample";
-            this.textBoxExample.Size = new System.Drawing.Size(450, 27);
-            this.textBoxExample.TabIndex = 2;
-            this.textBoxExample.Enter += new System.EventHandler(this.textBoxExample_Enter);
-            this.textBoxExample.Leave += new System.EventHandler(this.textBoxExample_Leave);
+            this.labelNumber.AutoSize = true;
+            this.labelNumber.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelNumber.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelNumber.Location = new System.Drawing.Point(107, 0);
+            this.labelNumber.Name = "labelNumber";
+            this.labelNumber.Size = new System.Drawing.Size(75, 55);
+            this.labelNumber.TabIndex = 0;
+            this.labelNumber.Text = "Number:";
             // 
-            // textBoxRussian
+            // textBoxRusWr
             // 
-            this.textBoxRussian.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxRussian.Location = new System.Drawing.Point(3, 165);
-            this.textBoxRussian.Name = "textBoxRussian";
-            this.textBoxRussian.Size = new System.Drawing.Size(450, 27);
-            this.textBoxRussian.TabIndex = 3;
-            this.textBoxRussian.Enter += new System.EventHandler(this.textBoxRussian_Enter);
-            this.textBoxRussian.Leave += new System.EventHandler(this.textBoxRussian_Leave);
+            this.textBoxRusWr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxRusWr.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxRusWr.Location = new System.Drawing.Point(188, 223);
+            this.textBoxRusWr.Name = "textBoxRusWr";
+            this.textBoxRusWr.Size = new System.Drawing.Size(272, 27);
+            this.textBoxRusWr.TabIndex = 1;
             // 
-            // buttonAdd
+            // textBoxNumber
             // 
-            this.buttonAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAdd.Location = new System.Drawing.Point(3, 273);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(451, 67);
-            this.buttonAdd.TabIndex = 4;
-            this.buttonAdd.Text = "ADD";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.textBoxNumber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxNumber.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxNumber.Location = new System.Drawing.Point(188, 3);
+            this.textBoxNumber.Name = "textBoxNumber";
+            this.textBoxNumber.Size = new System.Drawing.Size(272, 27);
+            this.textBoxNumber.TabIndex = 1;
             // 
-            // comboBox1
+            // labelRusWr
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 219);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(451, 28);
-            this.comboBox1.TabIndex = 5;
+            this.labelRusWr.AutoSize = true;
+            this.labelRusWr.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelRusWr.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelRusWr.Location = new System.Drawing.Point(64, 220);
+            this.labelRusWr.Name = "labelRusWr";
+            this.labelRusWr.Size = new System.Drawing.Size(118, 57);
+            this.labelRusWr.TabIndex = 0;
+            this.labelRusWr.Text = "Russian Word:";
             // 
-            // tableLayoutPanel2
+            // textBoxExam
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.comboBox1, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.buttonAdd, 0, 5);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxExample, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxEnglish, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxTranscription, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.textBoxRussian, 0, 3);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 6;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(457, 343);
-            this.tableLayoutPanel2.TabIndex = 6;
+            this.textBoxExam.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxExam.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxExam.Location = new System.Drawing.Point(188, 168);
+            this.textBoxExam.Name = "textBoxExam";
+            this.textBoxExam.Size = new System.Drawing.Size(272, 27);
+            this.textBoxExam.TabIndex = 1;
             // 
-            // Page2
+            // labelEnWr
             // 
-            this.Page2.Controls.Add(this.tableLayoutPanel2);
-            this.Page2.Location = new System.Drawing.Point(4, 25);
-            this.Page2.Name = "Page2";
-            this.Page2.Padding = new System.Windows.Forms.Padding(3);
-            this.Page2.Size = new System.Drawing.Size(463, 349);
-            this.Page2.TabIndex = 0;
-            this.Page2.Text = "Insert";
-            this.Page2.UseVisualStyleBackColor = true;
+            this.labelEnWr.AutoSize = true;
+            this.labelEnWr.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelEnWr.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelEnWr.Location = new System.Drawing.Point(65, 55);
+            this.labelEnWr.Name = "labelEnWr";
+            this.labelEnWr.Size = new System.Drawing.Size(117, 55);
+            this.labelEnWr.TabIndex = 0;
+            this.labelEnWr.Text = "English Word:";
+            // 
+            // textBoxTranscr
+            // 
+            this.textBoxTranscr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxTranscr.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxTranscr.Location = new System.Drawing.Point(188, 113);
+            this.textBoxTranscr.Name = "textBoxTranscr";
+            this.textBoxTranscr.Size = new System.Drawing.Size(272, 27);
+            this.textBoxTranscr.TabIndex = 1;
+            // 
+            // labelExample
+            // 
+            this.labelExample.AutoSize = true;
+            this.labelExample.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelExample.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelExample.Location = new System.Drawing.Point(103, 165);
+            this.labelExample.Name = "labelExample";
+            this.labelExample.Size = new System.Drawing.Size(79, 55);
+            this.labelExample.TabIndex = 0;
+            this.labelExample.Text = "Example:";
+            // 
+            // textBoxEnWr
+            // 
+            this.textBoxEnWr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxEnWr.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEnWr.Location = new System.Drawing.Point(188, 58);
+            this.textBoxEnWr.Name = "textBoxEnWr";
+            this.textBoxEnWr.Size = new System.Drawing.Size(272, 27);
+            this.textBoxEnWr.TabIndex = 1;
+            // 
+            // labelTranscr
+            // 
+            this.labelTranscr.AutoSize = true;
+            this.labelTranscr.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelTranscr.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTranscr.Location = new System.Drawing.Point(65, 110);
+            this.labelTranscr.Name = "labelTranscr";
+            this.labelTranscr.Size = new System.Drawing.Size(117, 55);
+            this.labelTranscr.TabIndex = 0;
+            this.labelTranscr.Text = "Trancsription:";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.tableLayoutPanel4);
+            this.panel1.Location = new System.Drawing.Point(534, 413);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 248);
+            this.panel1.TabIndex = 3;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel4.Controls.Add(this.buttonNewNote, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.buttonDelete, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.buttonChange, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.buttonSave, 1, 3);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 4;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(198, 246);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // buttonNewNote
+            // 
+            this.buttonNewNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonNewNote.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonNewNote.Location = new System.Drawing.Point(32, 3);
+            this.buttonNewNote.Name = "buttonNewNote";
+            this.buttonNewNote.Size = new System.Drawing.Size(132, 55);
+            this.buttonNewNote.TabIndex = 0;
+            this.buttonNewNote.Text = "New Note";
+            this.buttonNewNote.UseVisualStyleBackColor = true;
+            this.buttonNewNote.Click += new System.EventHandler(this.buttonNewNote_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonDelete.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonDelete.Location = new System.Drawing.Point(32, 64);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(132, 55);
+            this.buttonDelete.TabIndex = 0;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonChange
+            // 
+            this.buttonChange.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonChange.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonChange.Location = new System.Drawing.Point(32, 125);
+            this.buttonChange.Name = "buttonChange";
+            this.buttonChange.Size = new System.Drawing.Size(132, 55);
+            this.buttonChange.TabIndex = 0;
+            this.buttonChange.Text = "Change";
+            this.buttonChange.UseVisualStyleBackColor = true;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSave.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSave.Location = new System.Drawing.Point(32, 186);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(132, 57);
+            this.buttonSave.TabIndex = 0;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(559, 386);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(150, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Мanaging records:";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 408);
+            this.ClientSize = new System.Drawing.Size(784, 669);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelForNote);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Main";
@@ -323,9 +495,11 @@ namespace DB_lesson
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.Page2.ResumeLayout(false);
+            this.panelForNote.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,22 +512,36 @@ namespace DB_lesson
         private System.Windows.Forms.TabPage Page3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBoxSelect;
         private System.Windows.Forms.TextBox textBoxSort;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addTableToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.TabPage Page2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.TextBox textBoxExample;
-        private System.Windows.Forms.TextBox textBoxEnglish;
-        private System.Windows.Forms.TextBox textBoxTranscription;
-        private System.Windows.Forms.TextBox textBoxRussian;
+        private System.Windows.Forms.ToolStripMenuItem translateToolStripMenuItem;
+        private System.Windows.Forms.Panel panelForNote;
+        private System.Windows.Forms.ToolStripMenuItem dictionaryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem outputTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.Label labelRusWr;
+        private System.Windows.Forms.Label labelExample;
+        private System.Windows.Forms.Label labelTranscr;
+        private System.Windows.Forms.Label labelEnWr;
+        private System.Windows.Forms.Label labelNumber;
+        private System.Windows.Forms.TextBox textBoxRusWr;
+        private System.Windows.Forms.TextBox textBoxExam;
+        private System.Windows.Forms.TextBox textBoxTranscr;
+        private System.Windows.Forms.TextBox textBoxEnWr;
+        private System.Windows.Forms.TextBox textBoxNumber;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button buttonNewNote;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonChange;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonRefresh;
     }
 }
 
