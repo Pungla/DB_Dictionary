@@ -20,6 +20,8 @@ namespace DB_lesson
     {
         DataBase dataBase = new DataBase();
 
+        static string eng_wrOld;
+
         static int widthNew = 0;
         static int heightNew = 0;
         static int widthOld = 0;
@@ -52,6 +54,15 @@ namespace DB_lesson
             dataGridView1.Columns.Add("Example", "Example");
             dataGridView1.Columns.Add("Russian_words", "Russian words");
             dataGridView1.Columns.Add("IsNew", String.Empty);
+        }
+
+        private void ClearField()
+        {
+            textBoxNumber.Text = "";
+            textBoxEnWr.Text = "";
+            textBoxTranscr.Text = "";
+            textBoxExam.Text = "";
+            textBoxRusWr.Text = "";
         }
 
         private void ReadSingleRow(DataGridView dgw, IDataRecord record , int i)
@@ -133,9 +144,23 @@ namespace DB_lesson
                 if (rowState == RowState.Deleted)
                 {
                     var id = Convert.ToString(dataGridView1.Rows[index].Cells[1].Value);
-                    var deleteQuery = $"delete from Dictionary where English_words = {id}";
+                    var deleteQuery = $"delete from Dictionary where English_words = '{id}'";
 
                     var command = new SqlCommand(deleteQuery, dataBase.getConnection());
+                    command.ExecuteNonQuery();
+                }
+
+                if (rowState == RowState.Modified)
+                {
+                    //var number = dataGridView1.Rows[index].Cells[0].Value.ToString();
+                    var eng_wr = dataGridView1.Rows[index].Cells[1].Value.ToString();
+                    var transcr = dataGridView1.Rows[index].Cells[2].Value.ToString();
+                    var example = dataGridView1.Rows[index].Cells[3].Value.ToString();
+                    var rus_wr = dataGridView1.Rows[index].Cells[4].Value.ToString();
+
+                    var changeQuery = $"update Dictionary set English_words = '{eng_wr}', Transcription = N'{transcr}', Example = '{example}', Russian_words = N'{rus_wr}' where English_words = '{eng_wrOld}'";
+
+                    var command = new SqlCommand(changeQuery, dataBase.getConnection());
                     command.ExecuteNonQuery();
                 }
             }
@@ -201,11 +226,36 @@ namespace DB_lesson
         private void buttonDelete_Click(object sender, System.EventArgs e)
         {
             deleteRow();
+            ClearField();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             UpdateTable();
+        }
+
+        private void Change()
+        {
+            var selectedRowIndex = dataGridView1.CurrentCell.RowIndex;
+
+            var number = textBoxNumber.Text;
+            var eng_wr = textBoxEnWr.Text;
+            eng_wrOld = dataGridView1.Rows[selectedRowIndex].Cells[1].Value.ToString();
+            var transcr = textBoxTranscr.Text;
+            var example = textBoxExam.Text;
+            var rus_wr = textBoxRusWr.Text;
+
+            if (dataGridView1.Rows[selectedRowIndex].Cells[0].Value.ToString() != string.Empty)
+            {
+                dataGridView1.Rows[selectedRowIndex].SetValues(number, eng_wr, transcr, example, rus_wr);
+                dataGridView1.Rows[selectedRowIndex].Cells[5].Value = RowState.Modified;
+            }
+        }
+
+        private void buttonChange_Click(object sender, EventArgs e)
+        {
+            Change();
+            ClearField();
         }
     }
 }

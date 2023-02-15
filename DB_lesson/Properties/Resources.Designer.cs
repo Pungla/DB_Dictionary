@@ -63,36 +63,6 @@ namespace DB_lesson.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cycle {
-            get {
-                object obj = ResourceManager.GetObject("cycle", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cycle1 {
-            get {
-                object obj = ResourceManager.GetObject("cycle1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap png_clipart_scalable_graphics_computer_icons_refresh_icon_cdr_area {
-            get {
-                object obj = ResourceManager.GetObject("png-clipart-scalable-graphics-computer-icons-refresh-icon-cdr-area", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap refresh_page_arrow_button_icon_icons_com_53909 {
             get {
                 object obj = ResourceManager.GetObject("refresh-page-arrow-button_icon-icons.com_53909", resourceCulture);

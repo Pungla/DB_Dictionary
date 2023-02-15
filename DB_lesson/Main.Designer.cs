@@ -82,7 +82,7 @@ namespace DB_lesson
             this.tabControl1.Controls.Add(this.Page2);
             this.tabControl1.Controls.Add(this.Page3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl1.Location = new System.Drawing.Point(0, 30);
+            this.tabControl1.Location = new System.Drawing.Point(0, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(784, 311);
@@ -200,7 +200,7 @@ namespace DB_lesson
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -211,7 +211,7 @@ namespace DB_lesson
             this.dictionaryToolStripMenuItem,
             this.translateToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(66, 26);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
             this.addToolStripMenuItem.Text = "Action";
             // 
             // addTableToolStripMenuItem
@@ -235,13 +235,13 @@ namespace DB_lesson
             // outputTableToolStripMenuItem
             // 
             this.outputTableToolStripMenuItem.Name = "outputTableToolStripMenuItem";
-            this.outputTableToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
+            this.outputTableToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
             this.outputTableToolStripMenuItem.Text = "Output Table";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // panelForNote
@@ -451,6 +451,7 @@ namespace DB_lesson
             this.buttonChange.TabIndex = 0;
             this.buttonChange.Text = "Change";
             this.buttonChange.UseVisualStyleBackColor = true;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
             // buttonSave
             // 
