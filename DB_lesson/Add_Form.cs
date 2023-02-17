@@ -46,6 +46,11 @@ namespace DB_lesson
                 MessageBox.Show("Not all data is entered!");
 
             dataBase.CloseConnection();
+
+            textBoxEnglish.Text = "";
+            textBoxTranscription.Text = "";
+            textBoxExample.Text = "";
+            textBoxRussian.Text = "";
         }
 
         private void textBoxEnglish_Enter(object sender, System.EventArgs e)

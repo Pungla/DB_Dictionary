@@ -47,6 +47,7 @@ namespace DB_lesson
             this.yandexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.googleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outputTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelForNote = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -84,7 +85,7 @@ namespace DB_lesson
             this.tabControl1.Controls.Add(this.Page2);
             this.tabControl1.Controls.Add(this.Page3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(784, 311);
@@ -199,10 +200,11 @@ namespace DB_lesson
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
             this.outputTableToolStripMenuItem,
+            this.testToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -219,14 +221,15 @@ namespace DB_lesson
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
             // 
             // dictionaryToolStripMenuItem
             // 
             this.dictionaryToolStripMenuItem.Name = "dictionaryToolStripMenuItem";
-            this.dictionaryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dictionaryToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.dictionaryToolStripMenuItem.Text = "Dictionary";
+            this.dictionaryToolStripMenuItem.Click += new System.EventHandler(this.dictionaryToolStripMenuItem_Click);
             // 
             // translateToolStripMenuItem
             // 
@@ -234,20 +237,20 @@ namespace DB_lesson
             this.yandexToolStripMenuItem,
             this.googleToolStripMenuItem});
             this.translateToolStripMenuItem.Name = "translateToolStripMenuItem";
-            this.translateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.translateToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.translateToolStripMenuItem.Text = "Translate";
             // 
             // yandexToolStripMenuItem
             // 
             this.yandexToolStripMenuItem.Name = "yandexToolStripMenuItem";
-            this.yandexToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.yandexToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.yandexToolStripMenuItem.Text = "Yandex";
             this.yandexToolStripMenuItem.Click += new System.EventHandler(this.yandexToolStripMenuItem_Click);
             // 
             // googleToolStripMenuItem
             // 
             this.googleToolStripMenuItem.Name = "googleToolStripMenuItem";
-            this.googleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.googleToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.googleToolStripMenuItem.Text = "Google";
             this.googleToolStripMenuItem.Click += new System.EventHandler(this.googleToolStripMenuItem_Click);
             // 
@@ -256,6 +259,13 @@ namespace DB_lesson
             this.outputTableToolStripMenuItem.Name = "outputTableToolStripMenuItem";
             this.outputTableToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
             this.outputTableToolStripMenuItem.Text = "Output Table";
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.testToolStripMenuItem.Text = "Test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -564,6 +574,7 @@ namespace DB_lesson
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.ToolStripMenuItem yandexToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem googleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }
 

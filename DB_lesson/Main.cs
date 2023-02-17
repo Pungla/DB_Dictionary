@@ -88,6 +88,7 @@ namespace DB_lesson
                 i++;
             }
             reader.Close();
+            dataBase.CloseConnection();
 
         }// выводит БД
 
@@ -271,6 +272,18 @@ namespace DB_lesson
             if (NetworkInterface.GetIsNetworkAvailable())
                 System.Diagnostics.Process.Start("https://translate.google.ru/");
             else MessageBox.Show("Internet connection not available");
+        }
+
+        private void dictionaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dictionary_Form dictionary = new Dictionary_Form();
+            dictionary.Show();
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Test_Form test = new Test_Form();
+            test.Show();
         }
     }
 }

@@ -65,17 +65,18 @@ namespace DB_lesson
             // comboBox1
             // 
             this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(3, 259);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(540, 28);
+            this.comboBox1.Size = new System.Drawing.Size(540, 27);
             this.comboBox1.TabIndex = 5;
             // 
             // buttonAdd
             // 
             this.buttonAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAdd.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonAdd.Location = new System.Drawing.Point(3, 323);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(540, 74);
@@ -87,7 +88,7 @@ namespace DB_lesson
             // textBoxExample
             // 
             this.textBoxExample.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxExample.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxExample.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxExample.Location = new System.Drawing.Point(3, 131);
             this.textBoxExample.Name = "textBoxExample";
             this.textBoxExample.Size = new System.Drawing.Size(540, 27);
@@ -98,7 +99,7 @@ namespace DB_lesson
             // textBoxEnglish
             // 
             this.textBoxEnglish.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxEnglish.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEnglish.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxEnglish.Location = new System.Drawing.Point(3, 3);
             this.textBoxEnglish.Name = "textBoxEnglish";
             this.textBoxEnglish.Size = new System.Drawing.Size(540, 27);
@@ -109,7 +110,7 @@ namespace DB_lesson
             // textBoxTranscription
             // 
             this.textBoxTranscription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxTranscription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxTranscription.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxTranscription.Location = new System.Drawing.Point(3, 67);
             this.textBoxTranscription.Name = "textBoxTranscription";
             this.textBoxTranscription.Size = new System.Drawing.Size(540, 27);
@@ -120,7 +121,7 @@ namespace DB_lesson
             // textBoxRussian
             // 
             this.textBoxRussian.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxRussian.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxRussian.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxRussian.Location = new System.Drawing.Point(3, 195);
             this.textBoxRussian.Name = "textBoxRussian";
             this.textBoxRussian.Size = new System.Drawing.Size(540, 27);
