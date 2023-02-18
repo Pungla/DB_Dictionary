@@ -29,6 +29,7 @@ namespace DB_lesson
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.radioButtonRu_En = new System.Windows.Forms.RadioButton();
             this.radioButtonEn_Ru = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -41,6 +42,9 @@ namespace DB_lesson
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelTime = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -142,7 +146,7 @@ namespace DB_lesson
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(416, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(416, 28);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -154,7 +158,7 @@ namespace DB_lesson
             // 
             // buttonStop
             // 
-            this.buttonStop.Location = new System.Drawing.Point(17, 291);
+            this.buttonStop.Location = new System.Drawing.Point(12, 291);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(137, 53);
             this.buttonStop.TabIndex = 6;
@@ -172,12 +176,36 @@ namespace DB_lesson
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // labelTime
+            // 
+            this.labelTime.AutoSize = true;
+            this.labelTime.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTime.Location = new System.Drawing.Point(336, 397);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(0, 19);
+            this.labelTime.TabIndex = 7;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(12, 393);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(307, 23);
+            this.progressBar1.Step = 1;
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 8;
+            // 
             // Test_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(416, 404);
+            this.ClientSize = new System.Drawing.Size(416, 434);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.labelTime);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.numericUpDown1);
@@ -217,5 +245,8 @@ namespace DB_lesson
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

@@ -13,6 +13,9 @@ namespace DB_lesson
 {
     public partial class Test_Form : Form
     {
+        private int min = 0;
+        private int sec = 0;
+
         private int count = 0;
         private SqlDataReader reader = null;
         private SqlCommand command = null;
@@ -118,6 +121,15 @@ namespace DB_lesson
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            progressBar1.Value = 0;
+            progressBar1.Visible = true;
+
+            timer1.Interval = 1000;
+            progressBar1.Maximum = (int)numericUpDown1.Value * 60;
+            min = (int)numericUpDown1.Value;
+            labelTime.Text = min.ToString() + ":" + sec.ToString() + "0";
+            timer1.Start();
+
             disablingButton(false);
 
             StartCommand();
@@ -130,6 +142,8 @@ namespace DB_lesson
 
             buttonStop.Enabled = false;
             buttonNext.Enabled = false;
+
+            progressBar1.Visible = false;
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
@@ -154,6 +168,8 @@ namespace DB_lesson
                 radioButtonEn_Ru.Enabled = true;
                 radioButtonRu_En.Enabled = true;
 
+                textBox1.Text = "";
+                textBox2.Text = "";
                 textBox1.Enabled = false;
                 textBox2.Enabled = false;
 
@@ -175,6 +191,39 @@ namespace DB_lesson
 
                 buttonStop.Enabled = true;
                 buttonNext.Enabled = true;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            sec--;
+            if (sec == -1)
+            {
+                min--;
+                sec = 59;
+            }
+            if (sec < 10)
+            {
+                labelTime.Text = min.ToString() + ":" + "0" + sec.ToString();
+                progressBar1.PerformStep();
+            }
+            else
+            {
+                labelTime.Text = min.ToString() + ":" + sec.ToString();
+                progressBar1.PerformStep();
+            }
+                
+
+            if (sec == 0 && min == 0)
+            {
+                timer1.Stop();
+
+                disablingButton(true);
+                reader.Close();
+                dataBase.CloseConnection();
+                labelTime.Text = "";
+                MessageBox.Show("Время вышло!");
+                progressBar1.Visible = false;
             }
         }
     }
