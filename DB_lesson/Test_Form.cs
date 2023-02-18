@@ -59,48 +59,47 @@ namespace DB_lesson
             {
                 if (textBox2.Text != russian)
                 {
-                    MessageBox.Show("Wrong!");
-                }   
+                    errorProvider1.SetError(textBox2, "Wrong!");
+                }
+                else errorProvider1.Clear();
+
+                textBox2.Text = "";
+                textBox1.Text = "";
+
+                if (reader.Read())
+                {
+                    ReadSingle(reader);
+                }
                 else
                 {
-                    textBox2.Text = "";
-                    textBox1.Text = "";
-
-                    if (reader.Read())
-                    {
-                        ReadSingle(reader);
-                    }
-                    else
-                    {
-                        MessageBox.Show("There are no words(");
-                        disablingButton(true);
-                        reader.Close();
-                        dataBase.CloseConnection();
-                    }
+                    MessageBox.Show("There are no words(");
+                    disablingButton(true);
+                    reader.Close();
+                    dataBase.CloseConnection();
                 }
+
             }
             else
             {
                 if (textBox2.Text != english)
                 {
-                    MessageBox.Show("Wrong!");
+                    errorProvider1.SetError(textBox2, "Wrong!");
+                }
+                else errorProvider1.Clear();
+
+                textBox2.Text = "";
+                textBox1.Text = "";
+
+                if (reader.Read())
+                {
+                    ReadSingle(reader);
                 }
                 else
                 {
-                    textBox2.Text = "";
-                    textBox1.Text = "";
-
-                    if (reader.Read())
-                    {
-                        ReadSingle(reader);
-                    }
-                    else
-                    {
-                        MessageBox.Show("There are no words(");
-                        disablingButton(true);
-                        reader.Close();
-                        dataBase.CloseConnection();
-                    }
+                    MessageBox.Show("There are no words(");
+                    disablingButton(true);
+                    reader.Close();
+                    dataBase.CloseConnection();
                 }
             }
         }
@@ -116,7 +115,7 @@ namespace DB_lesson
             else
             {
                 textBox1.Text = russian.ToString();
-            }            
+            }
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -212,7 +211,7 @@ namespace DB_lesson
                 labelTime.Text = min.ToString() + ":" + sec.ToString();
                 progressBar1.PerformStep();
             }
-                
+
 
             if (sec == 0 && min == 0)
             {
@@ -224,6 +223,15 @@ namespace DB_lesson
                 labelTime.Text = "";
                 MessageBox.Show("Время вышло!");
                 progressBar1.Visible = false;
+            }
+        }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                TestUpdate();
             }
         }
     }
