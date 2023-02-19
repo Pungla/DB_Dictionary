@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DB_lesson
@@ -16,7 +11,8 @@ namespace DB_lesson
         private int min = 0;
         private int sec = 0;
 
-        private int count = 0;
+        List<string> list = new List<string>();
+
         private SqlDataReader reader = null;
         private SqlCommand command = null;
 
@@ -53,12 +49,14 @@ namespace DB_lesson
             }
         }
 
-        private void TestUpdate()
+        private void NextQuestion()
         {
             if (radioButtonEn_Ru.Checked)
             {
                 if (textBox2.Text != russian)
                 {
+                    list.Add(english + " - " + russian);
+
                     errorProvider1.SetError(textBox2, "Wrong!");
                 }
                 else errorProvider1.Clear();
@@ -74,8 +72,7 @@ namespace DB_lesson
                 {
                     MessageBox.Show("There are no words(");
                     disablingButton(true);
-                    reader.Close();
-                    dataBase.CloseConnection();
+                    EndTest();
                 }
 
             }
@@ -83,6 +80,8 @@ namespace DB_lesson
             {
                 if (textBox2.Text != english)
                 {
+                    list.Add(russian + " - " + english);
+
                     errorProvider1.SetError(textBox2, "Wrong!");
                 }
                 else errorProvider1.Clear();
@@ -96,10 +95,9 @@ namespace DB_lesson
                 }
                 else
                 {
-                    MessageBox.Show("There are no words(");
+                    EndTest();
                     disablingButton(true);
-                    reader.Close();
-                    dataBase.CloseConnection();
+                    MessageBox.Show("There are no words(");
                 }
             }
         }
@@ -147,15 +145,14 @@ namespace DB_lesson
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            disablingButton(true);
+            EndTest();
 
-            reader.Close();
-            dataBase.CloseConnection();
+            disablingButton(true);
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            TestUpdate();
+            NextQuestion();
         }
 
         private void disablingButton(bool b)
@@ -215,14 +212,8 @@ namespace DB_lesson
 
             if (sec == 0 && min == 0)
             {
-                timer1.Stop();
-
-                disablingButton(true);
-                reader.Close();
-                dataBase.CloseConnection();
-                labelTime.Text = "";
-                MessageBox.Show("Время вышло!");
-                progressBar1.Visible = false;
+                EndTest();
+                MessageBox.Show("Время вышло!");                
             }
         }
 
@@ -231,8 +222,25 @@ namespace DB_lesson
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
-                TestUpdate();
+                NextQuestion();
             }
+        }
+
+        private void EndTest()
+        {
+            timer1.Stop();
+            labelTime.Text = "";
+            progressBar1.Visible = false;
+
+            disablingButton(true);
+
+            reader.Close();
+            dataBase.CloseConnection();
+
+            string toDisplay = string.Join(Environment.NewLine, list.ToArray());
+            MessageBox.Show(toDisplay);
+
+            list.Clear();
         }
     }
 }
