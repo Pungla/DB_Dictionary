@@ -23,11 +23,6 @@ namespace DB_lesson
 
         static string eng_wrOld;
 
-        static int widthNew = 0;
-        static int heightNew = 0;
-        static int widthOld = 0;
-        static int heightOld = 0;
-
         private int selectedRow;
 
         public Main()
@@ -37,11 +32,6 @@ namespace DB_lesson
 
         private void Main_Load(object sender, System.EventArgs e)
         {
-            widthNew = Width;
-            heightNew = Height;
-            widthOld = Width;
-            heightOld = Height;
-
             CreateColumns();
 
             RefreshDataGrid(dataGridView1);
@@ -90,31 +80,74 @@ namespace DB_lesson
             reader.Close();
             dataBase.CloseConnection();
 
-        }// выводит БД
+        }//подключение к бд dictionary
 
         private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
         {           
 
             if (tabControl1.SelectedTab == Page1)
             {
-                Width = widthOld;
-                Height = heightOld;
-
                 RefreshDataGrid(dataGridView1);
-                AutoSizeMode = AutoSizeMode.GrowOnly;
-                MaximizeBox = true;
+                SwitchingTabControl(false);
             }
             else
             {
-                widthOld = Width;
-                heightOld = Height;
-                AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                WindowState = FormWindowState.Normal;
-                Width = widthNew;
-                Height = heightNew;
-                MaximizeBox = false;
+                SwitchingTabControl(true);
+                RefreshListBox(listBox1);
             }
 
+        }
+
+        private void RefreshListBox(ListBox lb)
+        {
+            string queryString = $"SELECT * from Rules";
+
+            SqlCommand command = new SqlCommand(queryString, dataBase.getConnection());
+            dataBase.OpenConnection();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ReadSingleItem(lb, reader);
+            }
+            reader.Close();
+            dataBase.CloseConnection();
+        }//подключение к бд rules
+
+        private void ReadSingleItem(ListBox lb, IDataRecord record)
+        {
+            lb.Items.Add(record.GetString(1));
+        }//вывод в listBox
+
+        private void SwitchingTabControl(bool b) // убирает панели
+        {
+            if (b)
+            {
+                panel1.Enabled = false;
+                panel1.Visible = false;
+
+                panelForNote.Enabled = false;
+                panelForNote.Visible = false;
+
+                label1.Enabled = false;
+                label1.Visible = false;
+
+                tabControl1.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                panel1.Enabled = true;
+                panel1.Visible = true;
+
+                panelForNote.Enabled = true;
+                panelForNote.Visible = true;
+
+                label1.Enabled = true;
+                label1.Visible = true;
+
+                tabControl1.Dock = DockStyle.Top;
+            }
         }
 
         private void deleteRow()
@@ -284,6 +317,12 @@ namespace DB_lesson
         {
             Test_Form test = new Test_Form();
             test.Show();
+        }
+
+        private void buttonBigScreen_Click(object sender, EventArgs e)
+        {
+            BigScreen_Form form = new BigScreen_Form();
+            form.Show();
         }
     }
 }

@@ -121,6 +121,12 @@
     <Compile Include="Add_Form.Designer.cs">
       <DependentUpon>Add_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="BigScreen_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BigScreen_Form.Designer.cs">
+      <DependentUpon>BigScreen_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -144,6 +150,9 @@
     </Compile>
     <EmbeddedResource Include="Add_Form.resx">
       <DependentUpon>Add_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BigScreen_Form.resx">
+      <DependentUpon>BigScreen_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dictionary_Form.resx">
       <DependentUpon>Dictionary_Form.cs</DependentUpon>
@@ -187,6 +196,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DictionaryDB.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\depositphotos.jpg" />
+    <None Include="Resources\kisspng.jpg" />
+    <None Include="Resources\clipart.png" />
+    <None Include="Resources\transparent.png" />
+    <None Include="Resources\поиск-иконка-png-1.png" />
     <None Include="Resources\refresh-page-arrow-button_icon-icons.com_53909.png" />
   </ItemGroup>
   <ItemGroup>

@@ -37,8 +37,14 @@ namespace DB_lesson
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxSort = new System.Windows.Forms.TextBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
+            this.buttonBigScreen = new System.Windows.Forms.Button();
             this.Page2 = new System.Windows.Forms.TabPage();
-            this.Page3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxSearchForRules = new System.Windows.Forms.TextBox();
+            this.buttonChangeRule = new System.Windows.Forms.Button();
+            this.buttonDeleteRule = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +78,8 @@ namespace DB_lesson
             this.Page1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Page2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelForNote.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -83,12 +91,11 @@ namespace DB_lesson
             // 
             this.tabControl1.Controls.Add(this.Page1);
             this.tabControl1.Controls.Add(this.Page2);
-            this.tabControl1.Controls.Add(this.Page3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Location = new System.Drawing.Point(0, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(784, 311);
+            this.tabControl1.Size = new System.Drawing.Size(784, 348);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -98,20 +105,22 @@ namespace DB_lesson
             this.Page1.Location = new System.Drawing.Point(4, 25);
             this.Page1.Name = "Page1";
             this.Page1.Padding = new System.Windows.Forms.Padding(3);
-            this.Page1.Size = new System.Drawing.Size(776, 282);
+            this.Page1.Size = new System.Drawing.Size(776, 319);
             this.Page1.TabIndex = 1;
             this.Page1.Text = "Output";
             this.Page1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7F));
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxSort, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.buttonRefresh, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonRefresh, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonBigScreen, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -119,7 +128,7 @@ namespace DB_lesson
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(770, 276);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(770, 313);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dataGridView1
@@ -127,14 +136,14 @@ namespace DB_lesson
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
+            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 3);
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(764, 214);
+            this.dataGridView1.Size = new System.Drawing.Size(764, 244);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -145,9 +154,9 @@ namespace DB_lesson
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(3, 220);
+            this.label2.Location = new System.Drawing.Point(3, 250);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(702, 27);
+            this.label2.Size = new System.Drawing.Size(656, 31);
             this.label2.TabIndex = 6;
             this.label2.Text = "Search";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -156,9 +165,9 @@ namespace DB_lesson
             // 
             this.textBoxSort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSort.Location = new System.Drawing.Point(3, 250);
+            this.textBoxSort.Location = new System.Drawing.Point(3, 284);
             this.textBoxSort.Name = "textBoxSort";
-            this.textBoxSort.Size = new System.Drawing.Size(702, 27);
+            this.textBoxSort.Size = new System.Drawing.Size(656, 27);
             this.textBoxSort.TabIndex = 4;
             this.textBoxSort.TextChanged += new System.EventHandler(this.textBoxSort_TextChanged);
             // 
@@ -167,32 +176,114 @@ namespace DB_lesson
             this.buttonRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonRefresh.BackgroundImage")));
             this.buttonRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonRefresh.Location = new System.Drawing.Point(711, 223);
+            this.buttonRefresh.Location = new System.Drawing.Point(718, 253);
             this.buttonRefresh.Name = "buttonRefresh";
             this.tableLayoutPanel1.SetRowSpan(this.buttonRefresh, 2);
-            this.buttonRefresh.Size = new System.Drawing.Size(56, 50);
+            this.buttonRefresh.Size = new System.Drawing.Size(49, 57);
             this.buttonRefresh.TabIndex = 7;
             this.buttonRefresh.UseVisualStyleBackColor = true;
             this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
+            // buttonBigScreen
+            // 
+            this.buttonBigScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonBigScreen.BackgroundImage")));
+            this.buttonBigScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonBigScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonBigScreen.Location = new System.Drawing.Point(665, 253);
+            this.buttonBigScreen.Name = "buttonBigScreen";
+            this.tableLayoutPanel1.SetRowSpan(this.buttonBigScreen, 2);
+            this.buttonBigScreen.Size = new System.Drawing.Size(47, 57);
+            this.buttonBigScreen.TabIndex = 8;
+            this.buttonBigScreen.UseVisualStyleBackColor = true;
+            this.buttonBigScreen.Click += new System.EventHandler(this.buttonBigScreen_Click);
+            // 
             // Page2
             // 
+            this.Page2.Controls.Add(this.tableLayoutPanel2);
             this.Page2.Location = new System.Drawing.Point(4, 25);
             this.Page2.Name = "Page2";
             this.Page2.Padding = new System.Windows.Forms.Padding(3);
-            this.Page2.Size = new System.Drawing.Size(776, 282);
+            this.Page2.Size = new System.Drawing.Size(776, 319);
             this.Page2.TabIndex = 0;
-            this.Page2.Text = "Insert";
+            this.Page2.Text = "Rules";
             this.Page2.UseVisualStyleBackColor = true;
             // 
-            // Page3
+            // tableLayoutPanel2
             // 
-            this.Page3.Location = new System.Drawing.Point(4, 25);
-            this.Page3.Name = "Page3";
-            this.Page3.Size = new System.Drawing.Size(776, 282);
-            this.Page3.TabIndex = 2;
-            this.Page3.Text = "Translate";
-            this.Page3.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxSearchForRules, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.buttonChangeRule, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.buttonDeleteRule, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.listBox1, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(770, 313);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImage = global::DB_lesson.Properties.Resources.поиск_иконка_png_1;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 28);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // textBoxSearchForRules
+            // 
+            this.textBoxSearchForRules.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSearchForRules.Location = new System.Drawing.Point(41, 3);
+            this.textBoxSearchForRules.Name = "textBoxSearchForRules";
+            this.textBoxSearchForRules.Size = new System.Drawing.Size(263, 27);
+            this.textBoxSearchForRules.TabIndex = 1;
+            // 
+            // buttonChangeRule
+            // 
+            this.buttonChangeRule.BackgroundImage = global::DB_lesson.Properties.Resources.depositphotos;
+            this.buttonChangeRule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonChangeRule.Location = new System.Drawing.Point(695, 3);
+            this.buttonChangeRule.Name = "buttonChangeRule";
+            this.buttonChangeRule.Size = new System.Drawing.Size(32, 28);
+            this.buttonChangeRule.TabIndex = 2;
+            this.buttonChangeRule.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteRule
+            // 
+            this.buttonDeleteRule.BackgroundImage = global::DB_lesson.Properties.Resources.clipart;
+            this.buttonDeleteRule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDeleteRule.Location = new System.Drawing.Point(733, 3);
+            this.buttonDeleteRule.Name = "buttonDeleteRule";
+            this.buttonDeleteRule.Size = new System.Drawing.Size(32, 28);
+            this.buttonDeleteRule.TabIndex = 3;
+            this.buttonDeleteRule.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.tableLayoutPanel2.SetColumnSpan(this.listBox1, 5);
+            this.listBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 19;
+            this.listBox1.Location = new System.Drawing.Point(3, 37);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(764, 273);
+            this.listBox1.TabIndex = 4;
             // 
             // menuStrip1
             // 
@@ -523,6 +614,9 @@ namespace DB_lesson
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Page2.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelForNote.ResumeLayout(false);
@@ -539,7 +633,6 @@ namespace DB_lesson
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Page1;
-        private System.Windows.Forms.TabPage Page3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBoxSort;
@@ -575,6 +668,13 @@ namespace DB_lesson
         private System.Windows.Forms.ToolStripMenuItem yandexToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem googleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.Button buttonBigScreen;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxSearchForRules;
+        private System.Windows.Forms.Button buttonChangeRule;
+        private System.Windows.Forms.Button buttonDeleteRule;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
