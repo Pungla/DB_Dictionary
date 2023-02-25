@@ -92,7 +92,7 @@ namespace DB_lesson
             this.tabControl1.Controls.Add(this.Page1);
             this.tabControl1.Controls.Add(this.Page2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(784, 348);
@@ -261,6 +261,7 @@ namespace DB_lesson
             this.buttonChangeRule.Size = new System.Drawing.Size(32, 28);
             this.buttonChangeRule.TabIndex = 2;
             this.buttonChangeRule.UseVisualStyleBackColor = true;
+            this.buttonChangeRule.Click += new System.EventHandler(this.buttonChangeRule_Click);
             // 
             // buttonDeleteRule
             // 
@@ -271,6 +272,7 @@ namespace DB_lesson
             this.buttonDeleteRule.Size = new System.Drawing.Size(32, 28);
             this.buttonDeleteRule.TabIndex = 3;
             this.buttonDeleteRule.UseVisualStyleBackColor = true;
+            this.buttonDeleteRule.Click += new System.EventHandler(this.buttonDeleteRule_Click);
             // 
             // listBox1
             // 
@@ -284,6 +286,7 @@ namespace DB_lesson
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(764, 273);
             this.listBox1.TabIndex = 4;
+            this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
             // menuStrip1
             // 
@@ -295,7 +298,7 @@ namespace DB_lesson
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 

@@ -100,6 +100,7 @@ namespace DB_lesson
 
         private void RefreshListBox(ListBox lb)
         {
+            lb.Items.Clear();
             string queryString = $"SELECT * from Rules";
 
             SqlCommand command = new SqlCommand(queryString, dataBase.getConnection());
@@ -323,6 +324,38 @@ namespace DB_lesson
         {
             BigScreen_Form form = new BigScreen_Form();
             form.Show();
+        }
+
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = listBox1.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches && e.Button == MouseButtons.Left)
+            {
+                OpenRules_Form form = new OpenRules_Form();
+                form.Show();
+                form.OutputRule(listBox1.SelectedItem.ToString());
+            }
+        }
+
+        private void buttonChangeRule_Click(object sender, EventArgs e)
+        {
+            AddRules_Form form = new AddRules_Form();
+            form.Show();
+        }
+
+        private void buttonDeleteRule_Click(object sender, EventArgs e)
+        {
+            dataBase.OpenConnection();
+
+            var id = Convert.ToString(listBox1.SelectedItem);
+            var deleteQuery = $"delete from Rules where name_rule = '{id}'";
+
+            var command = new SqlCommand(deleteQuery, dataBase.getConnection());
+            command.ExecuteNonQuery();
+
+            dataBase.CloseConnection();
+
+            listBox1.Items.Remove(listBox1.SelectedItem);
         }
     }
 }
