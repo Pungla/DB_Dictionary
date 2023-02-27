@@ -332,6 +332,7 @@ namespace DB_lesson
             if (index != ListBox.NoMatches && e.Button == MouseButtons.Left)
             {
                 OpenRules_Form form = new OpenRules_Form();
+                OpenRules_Form.strName = listBox1.SelectedItem.ToString();
                 form.Show();
                 form.OutputRule(listBox1.SelectedItem.ToString());
             }
@@ -356,6 +357,12 @@ namespace DB_lesson
             dataBase.CloseConnection();
 
             listBox1.Items.Remove(listBox1.SelectedItem);
+        }
+
+        private void addTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTable_Form form = new AddTable_Form();
+            form.Show();
         }
     }
 }

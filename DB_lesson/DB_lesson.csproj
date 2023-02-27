@@ -121,6 +121,12 @@
     <Compile Include="AddRules_Form.Designer.cs">
       <DependentUpon>AddRules_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddTable_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTable_Form.Designer.cs">
+      <DependentUpon>AddTable_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Add_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </Compile>
     <EmbeddedResource Include="AddRules_Form.resx">
       <DependentUpon>AddRules_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTable_Form.resx">
+      <DependentUpon>AddTable_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Add_Form.resx">
       <DependentUpon>Add_Form.cs</DependentUpon>

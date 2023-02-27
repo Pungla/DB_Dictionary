@@ -16,7 +16,7 @@ namespace DB_lesson
        
         public void OpenConnection()
         {
-            if (sqlConnection.State == System.Data.ConnectionState.Closed)
+            if (sqlConnection.State == ConnectionState.Closed)
             {
                 sqlConnection.Open();
             }
@@ -24,7 +24,7 @@ namespace DB_lesson
 
         public void CloseConnection()
         {
-            if (sqlConnection.State == System.Data.ConnectionState.Open)
+            if (sqlConnection.State == ConnectionState.Open)
             {
                 sqlConnection.Close();
             }
