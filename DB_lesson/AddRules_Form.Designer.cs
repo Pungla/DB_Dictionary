@@ -107,6 +107,7 @@ namespace DB_lesson
             this.Name = "AddRules_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddRules_Form";
+            this.Load += new System.EventHandler(this.AddRules_Form_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

@@ -92,7 +92,7 @@ namespace DB_lesson
             this.tabControl1.Controls.Add(this.Page1);
             this.tabControl1.Controls.Add(this.Page2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(784, 348);
@@ -298,7 +298,7 @@ namespace DB_lesson
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -315,14 +315,14 @@ namespace DB_lesson
             // addTableToolStripMenuItem
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.addTableToolStripMenuItem.Text = "Add table";
             this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
             // 
             // dictionaryToolStripMenuItem
             // 
             this.dictionaryToolStripMenuItem.Name = "dictionaryToolStripMenuItem";
-            this.dictionaryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dictionaryToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.dictionaryToolStripMenuItem.Text = "Dictionary";
             this.dictionaryToolStripMenuItem.Click += new System.EventHandler(this.dictionaryToolStripMenuItem_Click);
             // 
@@ -332,7 +332,7 @@ namespace DB_lesson
             this.yandexToolStripMenuItem,
             this.googleToolStripMenuItem});
             this.translateToolStripMenuItem.Name = "translateToolStripMenuItem";
-            this.translateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.translateToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.translateToolStripMenuItem.Text = "Translate";
             // 
             // yandexToolStripMenuItem

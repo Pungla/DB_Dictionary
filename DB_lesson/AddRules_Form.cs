@@ -35,5 +35,10 @@ namespace DB_lesson
 
             this.Close();
         }
+
+        private void AddRules_Form_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

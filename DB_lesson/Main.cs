@@ -21,7 +21,7 @@ namespace DB_lesson
     {
         DataBase dataBase = new DataBase();
 
-        static string eng_wrOld;
+        private string eng_wrOld;
 
         private int selectedRow;
 
@@ -363,6 +363,11 @@ namespace DB_lesson
         {
             AddTable_Form form = new AddTable_Form();
             form.Show();
+        }
+
+        public void AddTable_menuStrip(string str)
+        {
+            outputTableToolStripMenuItem.DropDownItems.Add(str);
         }
     }
 }
